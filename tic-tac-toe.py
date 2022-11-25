@@ -1,21 +1,24 @@
-gra = [[' ',' ',' '], [' ',' ',' '], [' ',' ',' ']]
+game = [[' ',' ',' '], [' ',' ',' '], [' ',' ',' ']]
 
+#  Print Board
 def board():
     print('---------')
-    print('| ' + gra[0][0] + ' ' + gra[0][1] + ' ' + gra[0][2] + ' |')
-    print('| ' + gra[1][0] + ' ' + gra[1][1] + ' ' + gra[1][2] + ' |')
-    print('| ' + gra[2][0] + ' ' + gra[2][1] + ' ' + gra[2][2] + ' |')
+    print('| ' + game[0][0] + ' ' + game[0][1] + ' ' + game[0][2] + ' |')
+    print('| ' + game[1][0] + ' ' + game[1][1] + ' ' + game[1][2] + ' |')
+    print('| ' + game[2][0] + ' ' + game[2][1] + ' ' + game[2][2] + ' |')
     print('---------')
 
 board()
 
+#  Check if 'a' wins
 def win(a):
     for x in range(3):
-        if ((gra[x][0] == gra[x][1] == gra[x][2] == a) or
-        (gra[0][x] == gra[1][x] == gra[2][x] == a) or
-        (gra[0][0] == gra[1][1] == gra[2][2] == a) or
-        (gra[0][2] == gra[1][1] == gra[2][0] == a)):
+        if ((game[x][0] == game[x][1] == game[x][2] == a) or
+        (game[0][x] == game[1][x] == game[2][x] == a) or
+        (game[0][0] == game[1][1] == game[2][2] == a) or
+        (game[0][2] == game[1][1] == game[2][0] == a)):
             return True
+
 
 def moves(n):               
     new_move = []
@@ -38,33 +41,22 @@ def moves(n):
                 new_move = []
                 move = input('give me two coordinates of your  next move, please:').split()
             else:
-                if gra[new_move[0]-1][new_move[1]-1] != ' ':
+                if game[new_move[0]-1][new_move[1]-1] != ' ':
                     print('This cell is occupied! Choose another one!')
                     new_move = []
                     move = input('give me two coordinates of your  next move, please:').split()
                 else:
-                    gra[new_move[0]-1][new_move[1]-1] = n
+                    game[new_move[0]-1][new_move[1]-1] = n
                     board()
-                    
-while not all([bool(gra[i][j] != ' ') for i in range(3) for j in range(3)]):
-    moves('X')
-    if win('X'):
-        print('X wins')
+i=0                    
+turns=['X','O']
+while not all([bool(game[i][j] != ' ') for i in range(3) for j in range(3)]):
+    moves(turns[i%2])
+    if win(turns[i%2]):
+        print(turns[i%2], 'wins')
         break
-    elif win('O'):
-        print('O wins')
-        break
-    elif all([bool(gra[i][j] != ' ') for i in range(3) for j in range(3)]):
-        print('Draw')
-        break
-    moves('O')
-    if win('X'):
-        print('X wins')
-        break
-    elif win('O'):
-        print('O wins')
-        break
-    elif all([bool(gra[i][j] != ' ') for i in range(3) for j in range(3)]):
-        print('Draw')
-        break
-        
+    i+=1
+
+if all([bool(game[i][j] != ' ') for i in range(3) for j in range(3)]):
+    print('Draw')
+    
