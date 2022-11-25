@@ -9,7 +9,7 @@ def board():
     print('---------')
 
 board()
-#asdasdasdas
+
 #  Check if 'a' wins
 def win(a):
     for x in range(3):
