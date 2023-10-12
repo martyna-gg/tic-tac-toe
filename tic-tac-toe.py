@@ -22,7 +22,7 @@ def win(a):
 # New move
 def moves(n):               
     new_move = []
-    move = input('give me two coordinates of your  next move, please:').split()
+    move = input('give me two coordinates of your  next move, please: >').split()
     while new_move == []:
         try:
             new_move.append(int(move[0]))
@@ -30,21 +30,21 @@ def moves(n):
         except ValueError:  # Check if given coordinates are numbers
             print('You should enter numbers!')
             new_move = []
-            move = input('give me two coordinates of your  next move, please:').split()
+            move = input('give me two coordinates of your  next move, please: >').split()
         except IndexError:  # Check if there are two of coordinates
             print('You should enter two numbers!')
             new_move = []
-            move = input('give me two coordinates of your  next move, please:').split()
+            move = input('give me two coordinates of your  next move, please: >').split()
         else:  # Check the range of coordinates
             if new_move not in [[1, 1], [1, 2], [1, 3], [2, 1], [2, 2], [2, 3], [3, 1], [3, 2], [3, 3]]:
                 print('Coordinates should be from 1 to 3!')
                 new_move = []
-                move = input('give me two coordinates of your  next move, please:').split()
+                move = input('give me two coordinates of your  next move, please: >').split()
             else:  # Check if the coordinates are not occupied
                 if game[new_move[0]-1][new_move[1]-1] != ' ':
                     print('This cell is occupied! Choose another one!')
                     new_move = []
-                    move = input('give me two coordinates of your  next move, please:').split()
+                    move = input('give me two coordinates of your  next move, please: >').split()
                 else:
                     game[new_move[0]-1][new_move[1]-1] = n
                     board()
