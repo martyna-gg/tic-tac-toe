@@ -5,7 +5,11 @@ My first program in Python - tic-tac-toe game for two players with usage of func
 ## Requirements
 
 Code was developed and tested using:
+
+
 Ubuntu 18.04.6 LTS
+
+
 Python 3.6.9
 
 ## Usage
@@ -19,13 +23,13 @@ $ python3 tic-tac-toe.py
 |       |
 |       |
 ---------
-give me two coordinates of your  next move, please:2 1
+give me two coordinates of your  next move, please: >2 1
 ---------
 |       |
 | X     |
 |       |
 ---------
-give me two coordinates of your  next move, please:3 3   
+give me two coordinates of your  next move, please: >3 3   
 ---------
 |       |
 | X     |
